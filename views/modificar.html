@@ -1,0 +1,16 @@
+<div class="row">
+  <h3>{{titulo}}</h3>
+  <div>
+      <label> Valor Nuevo:</label> {{nuevo}}<br>
+      <label>Valor Viejo:</label> {{viejo}}<br>
+      <label>Fila:</label> {{fila}}
+  </div>
+  <div ui-grid="gridOptions" class="myGrid"
+    ui-grid-pagination
+    ui-grid-resize-columns
+    ui-grid-selection
+    ui-grid-exporter
+    ui-grid-edit
+  ></div>
+
+</div>
