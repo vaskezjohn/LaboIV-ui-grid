@@ -6,7 +6,7 @@ angular
     $scope.gridOptions = {
       // Configuracion para exportar datos.
       exporterCsvFilename: 'misdatos.csv',
-      // exporterCsvColumnSeparator: ',',
+      exporterCsvColumnSeparator: ';',
       exporterPdfDefaultStyle: {fontSize: 9},
       exporterPdfTableStyle: {margin: [30, 30, 30, 30]},
       exporterPdfTableHeaderStyle: {fontSize: 10, bold: true, italics: true, color: 'red'},
