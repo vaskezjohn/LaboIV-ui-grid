@@ -6,6 +6,8 @@
   ></div>
 
 
-  <ng-map center="{{latitud}}, {{logitud}}" zoom="10"></ng-map>
+  <ng-map center="{{latitud}}, {{logitud}}" zoom="10" on-center-changed="centerChanged()" >
+    <marker position="{{latitud}}, {{logitud}}" on-click="click()" title="Click to zoom"></marker> 
+  </ng-map>
 
 </div>

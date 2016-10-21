@@ -1,6 +1,6 @@
 angular
   .module('app')
-  .controller('ConfTPCtrl', function($scope, data, i18nService, uiGridConstants,NgMap) {
+  .controller('ConfTPCtrl', function($scope, data, i18nService, uiGridConstants,NgMap, $timeout) {
     $scope.titulo = "Configuracion Campos";
     // Objeto de configuracion de la grilla.
     $scope.gridOptions = {};
@@ -19,6 +19,8 @@ angular
       console.info(rta);
     });
 
+    var marker;
+    var map;
     //grid.appScope 
 
     console.log(uiGridConstants);
@@ -50,6 +52,7 @@ angular
           ,type: 'date'
           ,cellFilter: "date: 'dd-MM-yyyy'"
         },
+        { field: 'click', cellTemplate: '<button class="btn-primary" ng-click="grid.appScope.MostrarUbicacion(row.entity)">Ubicacion</button>' },
         { field: 'click', cellTemplate: '<button class="btn-primary" ng-click="grid.appScope.MostrarUbicacion(row.entity)">Ubicacion</button>' }
 
 
@@ -65,14 +68,20 @@ angular
       $scope.logitud=row['logitud'];
 
     }
-    //$scope.googleMapsUrl="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOoREaTARHW9ozVz9GHHCcx4jhn2FLwpM";
 
-     NgMap.getMap().then(function(map) {
-    console.log(map.getCenter());
-    console.log('markers', map.markers);
-    console.log('shapes', map.shapes);
-  });
-
+    NgMap.getMap().then(function(mapa) {
+      map = mapa;
+      marker = mapa.markers[0];
+    });
+    $scope.centerChanged = function(event) {
+      $timeout(function() {
+        map.panTo(marker.getPosition());
+      }, 3000);
+    }
+    $scope.click = function(event) {
+      map.setZoom(20);
+      map.setCenter(marker.getPosition());
+    }
 
   })
  
