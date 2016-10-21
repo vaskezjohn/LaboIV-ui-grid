@@ -6,11 +6,12 @@ angular
     'ui.grid.resizeColumns',
     'ui.grid.selection',
     'ui.grid.exporter',
-    'ui.grid.edit'
+    'ui.grid.edit',
+    'ngMap'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('simple');
+    $urlRouterProvider.otherwise('confTP');
     $stateProvider
 
     .state('simple', {
@@ -37,5 +38,10 @@ angular
       url: '/modificar',
       templateUrl: 'views/modificar.html',
       controller:'ModificarCtrl'
+    })
+    .state('confTP', {
+      url: '/confTP',
+      templateUrl: 'views/ConfiguradoTP.html',
+      controller:'ConfTPCtrl'
     })
   });
